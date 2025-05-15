@@ -1,4 +1,4 @@
-#!/root/victortools/venv/bin/python3
+#!/Users/Chuch0/Desktop/ProyectoSigy/victortools/venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys
