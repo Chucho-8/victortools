@@ -16,10 +16,14 @@ class RegistroUsuarioAPIView(APIView):
 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
+        print('Dentro de registro usuarios API')
         if serializer.is_valid():
             user = serializer.save()
             token, created = Token.objects.get_or_create(user=user)
+            print("El serializador es valido")
             return Response({'token': token.key}, status=status.HTTP_201_CREATED)
+        else:
+            print('El serializar no es valido')
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 #Vista para iniciar sesión (login)
