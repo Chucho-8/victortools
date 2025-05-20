@@ -30,7 +30,7 @@ print("DB_USER desde settings.py:", os.getenv("DB_USER"))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['64.23.168.241', 'localhost', '127.0.0.1', 'victortools.com.mx', 'www.victortools.com.mx', '192.168.0.13', '192.168.63.92']
 
