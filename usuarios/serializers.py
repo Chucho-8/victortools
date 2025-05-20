@@ -19,16 +19,22 @@ class UserSerializer(serializers.ModelSerializer):
         }
 
     # Método que define cómo crear un nuevo usuario
+    # def create(self, validated_data):
+    #     # Creamos un nuevo usuario con username y email
+    #     user = User(
+    #         username=validated_data['username'],
+    #         email=validated_data['email']
+    #     )
+    #     # Usamos set_password para que guarde la contraseña encriptada
+    #     user.set_password(validated_data['password'])
+    #     user.save()  # Guardamos el usuario en la base de datos
+    #     return user  # Retornamos el usuario creado
     def create(self, validated_data):
-        # Creamos un nuevo usuario con username y email
-        user = User(
-            username=validated_data['username'],
-            email=validated_data['email']
-        )
-        # Usamos set_password para que guarde la contraseña encriptada
-        user.set_password(validated_data['password'])
-        user.save()  # Guardamos el usuario en la base de datos
-        return user  # Retornamos el usuario creado
+        email = validated_data.get('email')
+        validated_data['username'] = email  # usamos el correo como username
+        user = User.objects.create_user(**validated_data)  # ya encripta la contraseña
+        return user
+
     
     
 class UserProfileSerializer(serializers.ModelSerializer):
