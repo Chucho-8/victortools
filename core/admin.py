@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Maquina, Registro, ConteoProduccion, Piston, Motor, SensorPeso, SensorOptico, HistorialProduccion
+from .models import Maquina, Registro, ConteoProduccion, Piston, Motor, SensorPeso, SensorOptico, HistorialProduccion, senales
 
 # admin.site.register(Maquina)
 # admin.site.register(Registro)
@@ -77,3 +77,9 @@ class HistorialProduccionAdmin(admin.ModelAdmin):
     list_display = ('id', 'maquina', 'cantidad_producida', 'fecha_hora', 'evento')  # Qué columnas se ven en la tabla
     list_filter = ('maquina', 'fecha_hora')  # Filtros por máquina y fecha
     search_fields = ('maquina__nombre', 'evento')  # Buscar por nombre de máquina o tipo de evento
+
+# Registrando señales
+@admin.register(senales)
+class SenalesAdmin(admin.ModelAdmin):
+    list_display = ('id', "id_senal", 'nombre', 'estado')
+    ordering = ('id_senal',)

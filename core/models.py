@@ -139,3 +139,19 @@ class HistorialProduccion(models.Model):
 
     def __str__(self):
         return f"{self.maquina.nombre} - {self.cantidad_producida} unidades - {self.fecha_hora}"
+    
+class senales(models.Model):
+    nombre = models.CharField(max_length=200, verbose_name="nombre")
+    descripcion = models.TextField(verbose_name="descripcion")
+    estado = models.BooleanField(verbose_name="estado", default=False)
+    create = models.DateTimeField(auto_now_add=True, verbose_name="Fecha creación")
+    update = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de edición")
+    id_senal = models.IntegerField(verbose_name="indice", default=-1)
+
+    class Meta:
+        verbose_name = "señal"
+        verbose_name_plural = "señales"
+        ordering = ['id']
+
+    def __str__(self):
+        return self.nombre + str(self.estado)

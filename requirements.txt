@@ -7,4 +7,5 @@ PyJWT==2.9.0
 python-dotenv==1.1.0
 sqlparse==0.5.3
 gunicorn
+django-cors-headers
 
